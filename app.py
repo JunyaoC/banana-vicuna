@@ -12,8 +12,9 @@ def init():
     # model = pipeline('fill-mask', model='bert-base-uncased', device=device)
 
     cpu_count = multiprocessing.cpu_count()
-    print(f"Running with {cpu_count} CPUs")
-    llm = Llama(model_path="./koala-7B.ggmlv3.q5_1.bin", n_gpu_layers=20000, n_threads=10, verbose=False, n_ctx=4096)
+    cpu_count_80 = int(cpu_count*0.8)
+    print(f"Total CPU: {cpu_count}, running with {cpu_count_80} CPUs")
+    llm = Llama(model_path="./koala-7B.ggmlv3.q5_1.bin", n_gpu_layers=20000, n_threads=cpu_count_80, verbose=False, n_ctx=4096)
 
     context = {
         "llm": llm

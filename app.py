@@ -13,7 +13,7 @@ def init():
 
     cpu_count = multiprocessing.cpu_count()
     print(f"Running with {cpu_count} CPUs")
-    llm = Llama(model_path="./stable-vicuna-13B.ggmlv3.q5_1.bin", n_gpu_layers=10, n_threads=cpu_count, verbose=False, n_ctx=4096)
+    llm = Llama(model_path="./koala-7B.ggmlv3.q5_1.bin", n_gpu_layers=20000, n_threads=cpu_count, verbose=False, n_ctx=4096)
 
     context = {
         "llm": llm

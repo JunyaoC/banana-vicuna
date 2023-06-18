@@ -13,13 +13,24 @@
 
 import os
 import wget
+from tqdm import tqdm
+
+url = "https://huggingface.co/TheBloke/koala-7B-GGML/resolve/main/koala-7B.ggmlv3.q5_1.bin"
+
+# Define a custom callback function for the progress bar
+def progress_bar_callback(current, total, width=80):
+    progress = current / total
+    progress_bar_width = int(progress * width)
+    progress_bar = '#' * progress_bar_width + '-' * (width - progress_bar_width)
+    print(f"Downloading: [{progress_bar}] {progress * 100:.2f}%", end='\r')
+
+# Download the file using wget with the progress bar
 
 # URL of the file to download
-url = "https://huggingface.co/TheBloke/stable-vicuna-13B-GGML/resolve/main/stable-vicuna-13B.ggmlv3.q5_1.bin"
 
 # Download the file using wget
-downloaded_file = wget.download(url)
-
+downloaded_file = wget.download(url, bar=progress_bar_callback)
+print()
 # Get the full path of the downloaded file
 downloaded_file_path = os.path.join(os.getcwd(), downloaded_file)
 

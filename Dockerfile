@@ -10,9 +10,9 @@ WORKDIR /
 RUN apt-get update && apt-get install -y git
 RUN apt-get update && apt-get install -y build-essential
 # Install python packages
-RUN pip3 install --upgrade pip
+RUN pip install --upgrade pip
 ADD requirements.txt requirements.txt
-RUN pip3 install -r requirements.txt
+RUN pip install -r requirements.txt
 
 RUN CMAKE_ARGS="-DLLAMA_CUBLAS=on" FORCE_CMAKE=1 pip install llama-cpp-python
 

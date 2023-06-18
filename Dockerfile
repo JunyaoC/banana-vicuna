@@ -1,7 +1,8 @@
 # This is a potassium-standard dockerfile, compatible with Banana
 
 # Must use a Cuda version 11+
-FROM pytorch/pytorch:1.11.0-cuda11.3-cudnn8-runtime
+# FROM pytorch/pytorch:1.11.0-cuda11.3-cudnn8-runtime
+FROM nvidia/cuda:12.0.1-devel-ubi8
 
 WORKDIR /
 

@@ -6,6 +6,10 @@ FROM nvidia/cuda:11.6.2-devel-ubuntu20.04
 
 WORKDIR /
 
+# Install Python and Pip
+RUN apt-get update && \
+    apt-get install -y python3 python3-pip
+
 # Install git
 RUN apt-get update && apt-get install -y git
 RUN apt-get update && apt-get install -y build-essential

@@ -30,6 +30,7 @@ def handler(context: dict, request: Request) -> Response:
     stop = request.json.get("stop")
     till_end = request.json.get("till_end")
     max_tokens = int(request.json.get("max_tokens"))
+    echo = int(request.json.get("echo"))
     
     llm = context.get("llm")
 
@@ -40,7 +41,7 @@ def handler(context: dict, request: Request) -> Response:
         _prompt = prompt
 
         while finish_reason != 'stop':
-            _output = llm( _prompt , max_tokens=max_tokens, stop=stop, echo=True)
+            _output = llm( _prompt , max_tokens=max_tokens, stop=stop, echo=echo)
             _prompt += _output['choices'][0]['text']
             finish_reason = _output['choices'][0]['finish_reason']
             print(_output['choices'][0]['finish_reason'])

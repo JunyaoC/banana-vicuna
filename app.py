@@ -13,7 +13,7 @@ def init():
 
     cpu_count = multiprocessing.cpu_count()
     # cpu_selected = int(cpu_count*0.5)
-    cpu_selected = 32
+    cpu_selected = 16
     print(f"Total CPU: {cpu_count}, running with {cpu_selected} CPUs")
     llm = Llama(model_path="./koala-7B.ggmlv3.q5_1.bin", n_gpu_layers=20000, n_threads=cpu_selected, verbose=False, n_ctx=4096)
 
